@@ -1,0 +1,12 @@
+{
+    "project_name": "rag-project",
+    "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
+    "author_name": "Your Name",
+    "description": "A Retrieval-Augmented Generation (RAG) project using LLMs",
+    "open_source_license": ["MIT", "Apache Software License 2.0", "GNU General Public License v3", "Not open source"],
+    "embedding_model": ["sentence-transformers/all-MiniLM-L6-v2", "BAAI/bge-small-en", "custom"],
+    "llm_model": ["mistralai/Mistral-7B-Instruct-v0.1", "gpt-3.5-turbo", "gpt-4", "custom"],
+    "vector_store": ["faiss", "chroma", "pinecone"],
+    "include_fastapi": ["yes", "no"],
+    "include_cli": ["yes", "no"]
+} 

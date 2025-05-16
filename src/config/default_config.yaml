@@ -1,0 +1,36 @@
+# RAG Pipeline Configuration
+
+# Retriever settings
+retriever:
+  embedding_model: "{{ cookiecutter.embedding_model }}"
+  dimension: 384  # Default for all-MiniLM-L6-v2
+  top_k: 5
+
+# Generator settings
+generator:
+  model: "{{ cookiecutter.llm_model }}"
+  temperature: 0.7
+  max_tokens: 512
+  top_p: 0.95
+
+# Vector store settings
+vector_store:
+  type: "{{ cookiecutter.vector_store }}"
+  {% if cookiecutter.vector_store == "faiss" %}
+  index_type: "FlatL2"
+  {% endif %}
+  {% if cookiecutter.vector_store == "chroma" %}
+  persist_directory: "data/chroma"
+  {% endif %}
+  {% if cookiecutter.vector_store == "pinecone" %}
+  environment: "us-west1-gcp"
+  index_name: "rag-index"
+  {% endif %}
+
+# API settings (if FastAPI is included)
+{% if cookiecutter.include_fastapi == "yes" %}
+api:
+  host: "0.0.0.0"
+  port: 8000
+  debug: false
+{% endif %} 
